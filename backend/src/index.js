@@ -10,6 +10,7 @@ app.use(express.json());
 app.get("/api/health", async (req, res) => {
   try {
     const result = await query("SELECT NOW() as now");
+    console.log("Health Check Successful:", result.rows[0]);
     res.json({ status: "ok", time: result.rows[0].now });
   } catch (err) {
     console.error("Health Check Failed:", err);
